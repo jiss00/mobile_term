@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import org.w3c.dom.Document;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
