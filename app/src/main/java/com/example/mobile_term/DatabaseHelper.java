@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // 테이블 생성 쿼리 수정
         db.execSQL("CREATE TABLE baseball_results (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "id INTEGER, player_name TEXT, team_name TEXT, avg TEXT);");
+                "player_name TEXT, team_name TEXT, avg TEXT);");
     }
 
     @Override

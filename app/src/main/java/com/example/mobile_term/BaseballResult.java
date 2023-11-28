@@ -1,20 +1,11 @@
 package com.example.mobile_term;
 
 public class BaseballResult {
-    private long id;
     private String playerName;
     private String teamName;
     private String avg;
 
     // 생성자, getter 및 setter 메서드 구현
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getPlayerName() {
         return playerName;

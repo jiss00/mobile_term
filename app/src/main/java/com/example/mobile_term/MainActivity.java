@@ -44,15 +44,14 @@ public class MainActivity extends AppCompatActivity {
                     for (BaseballResult result : baseballResults) {
                         // ContentValues를 사용하여 데이터베이스에 값을 삽입
                         ContentValues values = new ContentValues();
-                        values.put("id", result.getId());
                         values.put("player_name", result.getPlayerName());
                         values.put("team_name", result.getTeamName());
                         values.put("avg", result.getAvg());
 
                         // 특정 테이블에 데이터 삽입
                         db.insert("baseball_results", null, values);
-                        Log.d("WebCrawler", "ID: " + result.getId() +
-                                ", Player Name: " + result.getPlayerName() +
+                        Log.d("WebCrawler",
+                                " Player Name: " + result.getPlayerName() +
                                 ", Team Name: " + result.getTeamName() +
                                 ", Avg: " + result.getAvg());
                     }
