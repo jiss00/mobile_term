@@ -1,0 +1,45 @@
+<!-- res/layout/hitter_rankings.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="KBO Rankings"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/buttonHitterRanking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="16dp"
+        android:onClick="onHitterRankingButtonClick"
+        android:text="타자 순위" />
+
+    <Button
+        android:id="@+id/buttonPitcherRanking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle"
+        android:layout_alignRight="@id/listViewRankings"
+        android:layout_marginTop="16dp"
+        android:onClick="onPitcherRankingButtonClick"
+        android:text="투수 순위" />
+
+    <ListView
+        android:id="@+id/listViewRankings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/buttonPitcherRanking"
+        android:background="#9587AE"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:listSelector="?android:attr/textColorLinkInverse" />
+</RelativeLayout>
