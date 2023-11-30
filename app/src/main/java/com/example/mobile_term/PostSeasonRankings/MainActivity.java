@@ -1,4 +1,4 @@
-package com.example.mobile_term;
+package com.example.mobile_term.PostSeasonRankings;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mobile_term.R;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.mobile_term;
+package com.example.mobile_term.PostSeasonRankings;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

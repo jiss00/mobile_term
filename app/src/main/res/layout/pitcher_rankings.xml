@@ -1,0 +1,94 @@
+<!-- res/layout/hitter_rankings.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#390691"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitle_pitcher_victory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Pitcher Rankings"
+        android:textColor="#E2DFE6"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/button_pitcher_victory"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_pitcher_victory"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onPitcherButtonClick"
+        android:padding="10dp"
+        android:text="승리"
+        android:textColor="@color/white"
+        android:tag="victory"/>
+
+    <Button
+        android:id="@+id/button_pitcher_era"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_pitcher_victory"
+
+        android:layout_toRightOf="@id/button_pitcher_victory"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onPitcherButtonClick"
+        android:padding="10dp"
+        android:text="방어율"
+        android:textColor="@color/white"
+        android:tag="era"
+        />
+    <Button
+        android:id="@+id/button_pitcher_samjin"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_pitcher_victory"
+        android:layout_toRightOf="@id/button_pitcher_era"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onPitcherButtonClick"
+        android:padding="10dp"
+        android:text="삼진"
+        android:textColor="@color/white"
+        android:tag="so"
+
+        />
+    <Button
+        android:id="@+id/button_pitcher_save"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_pitcher_victory"
+        android:layout_toRightOf="@id/button_pitcher_samjin"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onPitcherButtonClick"
+        android:padding="10dp"
+        android:text="세이브"
+        android:textColor="@color/white"
+        android:tag="save"
+        />
+
+    <ListView
+        android:id="@+id/listView_pitcher_victory"
+        android:layout_width="wrap_content"
+        android:layout_height="197dp"
+        android:layout_below="@id/button_pitcher_victory"
+        android:background="#9587AE"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:listSelector="?android:attr/textColorLinkInverse" />
+</RelativeLayout>

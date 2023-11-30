@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     }
  */
-package com.example.mobile_term;
+package com.example.mobile_term.PostSeasonRankings;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

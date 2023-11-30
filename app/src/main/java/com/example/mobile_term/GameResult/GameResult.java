@@ -3,33 +3,21 @@ package com.example.mobile_term.GameResult;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mobile_term.BaseballResult;
-import com.example.mobile_term.DatabaseHelper;
-import com.example.mobile_term.MainActivity;
+import com.example.mobile_term.PostSeasonRankings.DatabaseHelper;
 import com.example.mobile_term.R;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 
 public class GameResult extends AppCompatActivity {

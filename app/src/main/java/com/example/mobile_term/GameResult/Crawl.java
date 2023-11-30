@@ -1,7 +1,5 @@
 package com.example.mobile_term.GameResult;
 
-import com.example.mobile_term.BaseballResult;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
