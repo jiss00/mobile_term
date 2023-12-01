@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameResult.Home">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameResult.Home">
@@ -20,7 +25,6 @@
             android:text="KBO Ranking"
             android:textSize="40sp"
             android:textStyle="bold|italic" />
-
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -55,8 +59,8 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="176dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="120sp"
             android:layout_marginTop="10sp"
             app:cardBackgroundColor="#FFFFFF"
@@ -69,5 +73,24 @@
                 android:layout_marginTop="10sp"
                 app:srcCompat="@drawable/baseball3" />
         </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120sp"
+            android:layout_marginTop="10sp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="173dp"
+                android:layout_height="167dp"
+                android:layout_marginTop="10sp"
+                app:srcCompat="@drawable/postseason" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -16,7 +16,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DetailRankings.MainActivity"
+            android:name=".PitcherDetailRankings.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HitterDetailRankings.MainActivity"
             android:exported="false" />
         <activity
             android:name=".PostSeasonRankings.MainActivity"
@@ -29,7 +32,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

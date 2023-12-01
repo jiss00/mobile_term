@@ -1,4 +1,4 @@
-package com.example.mobile_term.DetailRankings;
+package com.example.mobile_term.PitcherDetailRankings;
 
 public class BaseballResult {
     private String playerName;

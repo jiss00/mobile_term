@@ -7,13 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.mobile_term.PostSeasonRankings.MainActivity;
+import com.example.mobile_term.HitterDetailRankings.MainActivity;
 import com.example.mobile_term.R;
 
 public class Home extends AppCompatActivity {
     ImageView imageView1;
     ImageView imageView2;
     ImageView imageView3;
+    ImageView imageView4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class Home extends AppCompatActivity {
         imageView1 = (ImageView) findViewById(R.id.imageView);
         imageView2 = (ImageView) findViewById(R.id.imageView1);
         imageView3 = (ImageView) findViewById(R.id.imageView2);
+        imageView4 =(ImageView) findViewById(R.id.imageView3);
 
         imageView1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -40,7 +43,13 @@ public class Home extends AppCompatActivity {
 
         imageView3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(Home.this, com.example.mobile_term.DetailRankings.MainActivity.class);
+                Intent intent = new Intent(Home.this, com.example.mobile_term.PitcherDetailRankings.MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        imageView4.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Home.this, com.example.mobile_term.PostSeasonRankings.MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,10 +1,9 @@
-package com.example.mobile_term.DetailRankings;
+package com.example.mobile_term.PitcherDetailRankings;
 
 import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
