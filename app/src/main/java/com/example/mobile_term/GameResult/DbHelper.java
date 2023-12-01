@@ -1,16 +1,15 @@
-package com.example.mobile_term;
+package com.example.mobile_term.GameResult;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "result_2022.db";
     private static final int DATABASE_VERSION = 1;  // 버전을 증가시킴
 
 
-    public DatabaseHelper(Context context) {
+    public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

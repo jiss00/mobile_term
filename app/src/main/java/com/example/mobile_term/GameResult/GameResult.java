@@ -5,44 +5,38 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
-import com.example.mobile_term.BaseballResult;
-import com.example.mobile_term.DatabaseHelper;
-import com.example.mobile_term.MainActivity;
 import com.example.mobile_term.R;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameResult extends AppCompatActivity {
     Button btn;
     Button btn1;
     DatePickerDialog datePickerDialog;
     TextView resultTextView;
-    DatabaseHelper helper;
+    DbHelper helper;
     SQLiteDatabase db;
 
     @Override
@@ -79,7 +73,18 @@ public class GameResult extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        StringBuilder resultTextBuilder = new StringBuilder();
+        SpannableStringBuilder resultTextBuilder = new SpannableStringBuilder();
+        Map<String, Integer> teamLogoMap = new HashMap<>();
+        teamLogoMap.put("KT", R.drawable.kt);
+        teamLogoMap.put("두산", R.drawable.dusan);
+        teamLogoMap.put("삼성", R.drawable.samsung);
+        teamLogoMap.put("LG", R.drawable.lg);
+        teamLogoMap.put("키움", R.drawable.kium);
+        teamLogoMap.put("SSG", R.drawable.ssg);
+        teamLogoMap.put("NC", R.drawable.nc);
+        teamLogoMap.put("롯데", R.drawable.lotte);
+        teamLogoMap.put("KIA", R.drawable.kia);
+        teamLogoMap.put("한화", R.drawable.hanhwa);
 
         switch (item.getItemId()) {
             case 1:
@@ -93,15 +98,34 @@ public class GameResult extends AppCompatActivity {
                                     String win = dataModel.getWin();
                                     String lose = dataModel.getLose();
                                     String draw = dataModel.getDraw();
-                                    resultTextBuilder.append(rank).append("위")
-                                            .append(" ").append(teamName).append(" ")
-                                            .append(plays).append("경기 ")
-                                            .append(win).append("승 ")
-                                            .append(lose).append("패 ")
-                                            .append(draw).append(("무"))
-                                            .append("\n");
+                                    Integer teamLogoResourceId = teamLogoMap.get(teamName);
+                                    if (teamLogoResourceId != null) {
+                                        Drawable teamLogoDrawable = ContextCompat.getDrawable(this, teamLogoResourceId);
+                                        if (teamLogoDrawable != null) {
+                                            teamLogoDrawable.setBounds(0, 20,80,80);
+
+                                            ImageSpan imageSpan = new ImageSpan(teamLogoDrawable, ImageSpan.ALIGN_BASELINE);
+
+                                            // 팀 로고를 추가할 위치 계산
+                                            int logoPosition = rank.length() + 1 + teamName.length() + 1; // rank, 공백, teamName 다음에 로고를 추가
+
+                                            // 나머지 텍스트 추가
+                                            resultTextBuilder.append(rank).append("위")
+                                                    .append(" ").append(teamName)
+                                                    .append(" ");
+                                            resultTextBuilder.setSpan(imageSpan, resultTextBuilder.length()-1, resultTextBuilder.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+                                            resultTextBuilder.append(plays).append("경기 ")
+                                                    .append(win).append("승 ")
+                                                    .append(lose).append("패 ")
+                                                    .append(draw).append(("무"))
+                                                    .append("\n");
+                                        }
+                                    }
+
+                                    // 결과를 텍스트뷰에 설정
+                                    resultTextView.setText(resultTextBuilder);
                                 });
-                resultTextView.setText(resultTextBuilder.toString());
 
                 return true;
 
@@ -116,15 +140,34 @@ public class GameResult extends AppCompatActivity {
                             String win = dataModel.getWin();
                             String lose = dataModel.getLose();
                             String draw = dataModel.getDraw();
-                            resultTextBuilder.append(rank).append("위")
-                                    .append(" ").append(teamName)
-                                    .append(plays).append("경기 ")
-                                    .append(win).append("승 ")
-                                    .append(lose).append("패 ")
-                                    .append(draw).append(("무"))
-                                    .append("\n");
+                            Integer teamLogoResourceId = teamLogoMap.get(teamName);
+                            if (teamLogoResourceId != null) {
+                                Drawable teamLogoDrawable = ContextCompat.getDrawable(this, teamLogoResourceId);
+                                if (teamLogoDrawable != null) {
+                                    teamLogoDrawable.setBounds(0, 20,80,80);
+
+                                    ImageSpan imageSpan = new ImageSpan(teamLogoDrawable, ImageSpan.ALIGN_BASELINE);
+
+                                    // 팀 로고를 추가할 위치 계산
+                                    int logoPosition = rank.length() + 1 + teamName.length() + 1; // rank, 공백, teamName 다음에 로고를 추가
+
+                                    // 나머지 텍스트 추가
+                                    resultTextBuilder.append(rank).append("위")
+                                            .append(" ").append(teamName)
+                                            .append(" ");
+                                    resultTextBuilder.setSpan(imageSpan, resultTextBuilder.length()-1, resultTextBuilder.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+                                    resultTextBuilder.append(plays).append("경기 ")
+                                            .append(win).append("승 ")
+                                            .append(lose).append("패 ")
+                                            .append(draw).append(("무"))
+                                            .append("\n");
+                                }
+                            }
+
+                            // 결과를 텍스트뷰에 설정
+                            resultTextView.setText(resultTextBuilder);
                         });
-                resultTextView.setText(resultTextBuilder.toString());
 
                 return true;
             case 3:
@@ -138,15 +181,34 @@ public class GameResult extends AppCompatActivity {
                             String win = dataModel.getWin();
                             String lose = dataModel.getLose();
                             String draw = dataModel.getDraw();
-                            resultTextBuilder.append(rank).append("위")
-                                    .append(" ").append(teamName)
-                                    .append(plays).append("경기 ")
-                                    .append(win).append("승 ")
-                                    .append(lose).append("패 ")
-                                    .append(draw).append(("무"))
-                                    .append("\n");
+                            Integer teamLogoResourceId = teamLogoMap.get(teamName);
+                            if (teamLogoResourceId != null) {
+                                Drawable teamLogoDrawable = ContextCompat.getDrawable(this, teamLogoResourceId);
+                                if (teamLogoDrawable != null) {
+                                    teamLogoDrawable.setBounds(0, 20,80,80);
+
+                                    ImageSpan imageSpan = new ImageSpan(teamLogoDrawable, ImageSpan.ALIGN_BASELINE);
+
+                                    // 팀 로고를 추가할 위치 계산
+                                    int logoPosition = rank.length() + 1 + teamName.length() + 1; // rank, 공백, teamName 다음에 로고를 추가
+
+                                    // 나머지 텍스트 추가
+                                    resultTextBuilder.append(rank).append("위")
+                                            .append(" ").append(teamName)
+                                            .append(" ");
+                                    resultTextBuilder.setSpan(imageSpan, resultTextBuilder.length()-1, resultTextBuilder.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+                                    resultTextBuilder.append(plays).append("경기 ")
+                                            .append(win).append("승 ")
+                                            .append(lose).append("패 ")
+                                            .append(draw).append(("무"))
+                                            .append("\n");
+                                }
+                            }
+
+                            // 결과를 텍스트뷰에 설정
+                            resultTextView.setText(resultTextBuilder);
                         });
-                resultTextView.setText(resultTextBuilder.toString());
 
                 return true;
             case 4:
@@ -160,15 +222,34 @@ public class GameResult extends AppCompatActivity {
                             String win = dataModel.getWin();
                             String lose = dataModel.getLose();
                             String draw = dataModel.getDraw();
-                            resultTextBuilder.append(rank).append("위")
-                                    .append(" ").append(teamName)
-                                    .append(plays).append("경기 ")
-                                    .append(win).append("승 ")
-                                    .append(lose).append("패 ")
-                                    .append(draw).append(("무"))
-                                    .append("\n");
+                            Integer teamLogoResourceId = teamLogoMap.get(teamName);
+                            if (teamLogoResourceId != null) {
+                                Drawable teamLogoDrawable = ContextCompat.getDrawable(this, teamLogoResourceId);
+                                if (teamLogoDrawable != null) {
+                                    teamLogoDrawable.setBounds(0, 20,80,80);
+
+                                    ImageSpan imageSpan = new ImageSpan(teamLogoDrawable, ImageSpan.ALIGN_BASELINE);
+
+                                    // 팀 로고를 추가할 위치 계산
+                                    int logoPosition = rank.length() + 1 + teamName.length() + 1; // rank, 공백, teamName 다음에 로고를 추가
+
+                                    // 나머지 텍스트 추가
+                                    resultTextBuilder.append(rank).append("위")
+                                            .append(" ").append(teamName)
+                                            .append(" ");
+                                    resultTextBuilder.setSpan(imageSpan, resultTextBuilder.length()-1, resultTextBuilder.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+                                    resultTextBuilder.append(plays).append("경기 ")
+                                            .append(win).append("승 ")
+                                            .append(lose).append("패 ")
+                                            .append(draw).append(("무"))
+                                            .append("\n");
+                                }
+                            }
+
+                            // 결과를 텍스트뷰에 설정
+                            resultTextView.setText(resultTextBuilder);
                         });
-                resultTextView.setText(resultTextBuilder.toString());
 
                 return true;
             case 5:
@@ -183,15 +264,34 @@ public class GameResult extends AppCompatActivity {
                             String win = dataModel.getWin();
                             String lose = dataModel.getLose();
                             String draw = dataModel.getDraw();
-                            resultTextBuilder.append(rank).append("위")
-                                    .append(" ").append(teamName)
-                                    .append(plays).append("경기 ")
-                                    .append(win).append("승 ")
-                                    .append(lose).append("패 ")
-                                    .append(draw).append(("무"))
-                                    .append("\n");
+                            Integer teamLogoResourceId = teamLogoMap.get(teamName);
+                            if (teamLogoResourceId != null) {
+                                Drawable teamLogoDrawable = ContextCompat.getDrawable(this, teamLogoResourceId);
+                                if (teamLogoDrawable != null) {
+                                    teamLogoDrawable.setBounds(0, 20,80,80);
+
+                                    ImageSpan imageSpan = new ImageSpan(teamLogoDrawable, ImageSpan.ALIGN_BASELINE);
+
+                                    // 팀 로고를 추가할 위치 계산
+                                    int logoPosition = rank.length() + 1 + teamName.length() + 1; // rank, 공백, teamName 다음에 로고를 추가
+
+                                    // 나머지 텍스트 추가
+                                    resultTextBuilder.append(rank).append("위")
+                                            .append(" ").append(teamName)
+                                            .append(" ");
+                                    resultTextBuilder.setSpan(imageSpan, resultTextBuilder.length()-1, resultTextBuilder.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+                                    resultTextBuilder.append(plays).append("경기 ")
+                                            .append(win).append("승 ")
+                                            .append(lose).append("패 ")
+                                            .append(draw).append(("무"))
+                                            .append("\n");
+                                }
+                            }
+
+                            // 결과를 텍스트뷰에 설정
+                            resultTextView.setText(resultTextBuilder);
                         });
-                resultTextView.setText(resultTextBuilder.toString());
 
                 return true;
 
@@ -202,7 +302,7 @@ public class GameResult extends AppCompatActivity {
 
     public List<DataModel> getData(String table) {
         List<DataModel> dataList = new ArrayList<>();
-        DatabaseHelper helper = new DatabaseHelper(GameResult.this);
+        DbHelper helper = new DbHelper(GameResult.this);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor res = db.rawQuery("select * from " + table, null);
         if (res.moveToFirst()) {
@@ -256,7 +356,7 @@ public class GameResult extends AppCompatActivity {
         protected void onPostExecute(List<TeamResult> teamResults) {
             if (teamResults != null) {
                 // 결과를 SQLite 데이터베이스에 저장하는 로직 추가
-                DatabaseHelper dbHelper = new DatabaseHelper(GameResult.this);
+                DbHelper dbHelper = new DbHelper(GameResult.this);
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
 
                 try {
