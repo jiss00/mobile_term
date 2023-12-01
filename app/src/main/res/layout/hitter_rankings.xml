@@ -1,0 +1,94 @@
+<!-- res/layout/hitter_rankings.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#390691"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitle_hitter_victory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Hitter Rankings"
+        android:textColor="#E2DFE6"
+        android:textSize="34sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/button_hitter_ba"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_hitter_victory"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onHitterButtonClick"
+        android:padding="10dp"
+        android:text="타율"
+        android:textColor="@color/white"
+        android:tag="ba"/>
+
+    <Button
+        android:id="@+id/button_hitter_rbi"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_hitter_victory"
+
+        android:layout_toRightOf="@id/button_hitter_ba"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onHitterButtonClick"
+        android:padding="10dp"
+        android:text="타점"
+        android:textColor="@color/white"
+        android:tag="rbi"
+        />
+    <Button
+        android:id="@+id/button_hitter_hr"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_hitter_victory"
+        android:layout_toRightOf="@id/button_hitter_rbi"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onHitterButtonClick"
+        android:padding="10dp"
+        android:text="홈런"
+        android:textColor="@color/white"
+        android:tag="hr"
+
+        />
+    <Button
+        android:id="@+id/button_hitter_sb"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle_hitter_victory"
+        android:layout_toRightOf="@id/button_hitter_hr"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="onHitterButtonClick"
+        android:padding="10dp"
+        android:text="도루"
+        android:textColor="@color/white"
+        android:tag="sb"
+        />
+
+    <ListView
+        android:id="@+id/listView_hitter_victory"
+        android:layout_width="wrap_content"
+        android:layout_height="197dp"
+        android:layout_below="@id/button_hitter_ba"
+        android:background="#9587AE"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:listSelector="?android:attr/textColorLinkInverse" />
+</RelativeLayout>

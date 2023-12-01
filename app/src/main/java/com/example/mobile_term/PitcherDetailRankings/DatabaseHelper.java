@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     }
  */
-package com.example.mobile_term.DetailRankings;
+package com.example.mobile_term.PitcherDetailRankings;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -58,7 +58,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "pitcher_rankings.db";
     private static final int DATABASE_VERSION = 3;
 
     private String category;
