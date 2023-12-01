@@ -54,10 +54,8 @@ public class TeamResult {
 
     public void setDraw(String draw) {
         this.draw = draw;
-    }
 
-<<<<<<< HEAD
+    }
 }
-=======
-}
->>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
+
+

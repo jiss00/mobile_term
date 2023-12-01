@@ -15,23 +15,16 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_marginLeft="75sp"
             android:layout_marginTop="10sp"
             android:text="TeamRanking"
             android:textSize="45sp"
             android:textStyle="bold|italic"
             app:autoSizeTextType="uniform" />
-=======
-            android:layout_marginLeft="100sp"
-            android:text="팀순위"
-            android:textSize="45sp" />
->>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-<<<<<<< HEAD
             android:layout_height="498dp"
             android:layout_marginLeft="20sp"
             android:text="연도를 선택해주세요"
@@ -58,18 +51,6 @@
                 android:layout_weight="1"
                 android:text="뒤로가기" />
         </LinearLayout>
-=======
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:width="300sp"
-            android:text="다른 날짜 결과" />
->>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
