@@ -1,4 +1,4 @@
-package com.example.mobile_term;
+package com.example.mobile_term.PostSeasonRankings;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,12 +7,10 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+public class WebCrawler {public List<BaseballResult> crawlBaseballResults(String url) throws IOException {
+    List<BaseballResult> baseballResults = new ArrayList<>();
 
-public class WebCrawler {
-    public List<BaseballResult> crawlBaseballResults() throws IOException {
-        List<BaseballResult> baseballResults = new ArrayList<>();
-        String url = "https://www.koreabaseball.com/Record/Player/HitterBasic/BasicOld.aspx?sort=HRA_RT";
-        try{
+    try {
         Document document = Jsoup.connect(url).get();
         Elements resultElements = document.select("#cphContents_cphContents_cphContents_udpContent > div.record_result > table > tbody > tr");
 
@@ -35,14 +33,10 @@ public class WebCrawler {
 
             baseballResults.add(baseballResult);
         }
-            // id 값 설정
-            for (int i = 0; i < baseballResults.size(); i++) {
-                baseballResults.get(i).setId(i + 1); // 간단히 1부터 순차적으로 id 설정
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return baseballResults;
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+    return baseballResults;
+}
 
 }

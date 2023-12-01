@@ -1,20 +1,11 @@
-package com.example.mobile_term;
+package com.example.mobile_term.DetailRankings;
 
 public class BaseballResult {
-    private long id;
     private String playerName;
     private String teamName;
-    private String avg;
+    private String value;
 
     // 생성자, getter 및 setter 메서드 구현
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getPlayerName() {
         return playerName;
@@ -32,11 +23,11 @@ public class BaseballResult {
         this.teamName = teamName;
     }
 
-    public String getAvg() {
-        return avg;
+    public String getValue() {
+        return value;
     }
 
-    public void setAvg(String avg) {
-        this.avg = avg;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

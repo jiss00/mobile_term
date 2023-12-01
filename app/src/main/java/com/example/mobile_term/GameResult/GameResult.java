@@ -2,6 +2,7 @@ package com.example.mobile_term.GameResult;
 
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
+<<<<<<< HEAD
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,6 +13,11 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ImageSpan;
+=======
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.os.Bundle;
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -19,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -37,18 +44,38 @@ public class GameResult extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
     TextView resultTextView;
     DbHelper helper;
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mobile_term.PostSeasonRankings.DatabaseHelper;
+import com.example.mobile_term.R;
+
+import java.io.IOException;
+import java.util.List;
+
+public class GameResult extends AppCompatActivity {
+    Button btn;
+    DatePickerDialog datePickerDialog;
+    TextView resultTextView;
+    DatabaseHelper helper;
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
     SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_result);
+<<<<<<< HEAD
         resultTextView = (TextView) findViewById(R.id.textView2);
+=======
+        resultTextView = (TextView)findViewById(R.id.textView2);
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
 
         new FetchBaseballResultsTask().execute();
 
         btn = findViewById(R.id.button);
         registerForContextMenu(btn);
+<<<<<<< HEAD
         btn1 = (Button)findViewById(R.id.button2);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -293,6 +320,29 @@ public class GameResult extends AppCompatActivity {
                             resultTextView.setText(resultTextBuilder);
                         });
 
+=======
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,View v, ContextMenu.ContextMenuInfo menuInfo){
+        super.onCreateContextMenu(menu,v,menuInfo);
+        menu.setHeaderTitle("연도 선택");
+        menu.add(0,1,0,"2019");
+        menu.add(0,2,0,"2020");
+        menu.add(0,3,0,"2021");
+        menu.add(0,4,0,"2022");
+        menu.add(0,5,0,"2023");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case 1:
+                resultTextView.setText("1번이노");
+                return true;
+
+            case 2:
+                resultTextView.setText("2번이노");
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
                 return true;
 
             default:
@@ -300,6 +350,7 @@ public class GameResult extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
     public List<DataModel> getData(String table) {
         List<DataModel> dataList = new ArrayList<>();
         DbHelper helper = new DbHelper(GameResult.this);
@@ -335,6 +386,8 @@ public class GameResult extends AppCompatActivity {
 
 }
 
+=======
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
 
     private class FetchBaseballResultsTask extends AsyncTask<Void, Void, List<TeamResult>> {
         @Override
@@ -351,12 +404,19 @@ public class GameResult extends AppCompatActivity {
 
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
         @Override
         protected void onPostExecute(List<TeamResult> teamResults) {
             if (teamResults != null) {
                 // 결과를 SQLite 데이터베이스에 저장하는 로직 추가
+<<<<<<< HEAD
                 DbHelper dbHelper = new DbHelper(GameResult.this);
+=======
+                DatabaseHelper dbHelper = new DatabaseHelper(GameResult.this);
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
 
                 try {
@@ -377,9 +437,15 @@ public class GameResult extends AppCompatActivity {
                                 " rank: " + result.getRank() +
                                         ", teamName: " + result.getTeamName() +
                                         ", plays: " + result.getPlays()
+<<<<<<< HEAD
                                         + "win: " + result.getWin()
                                         + "lose " + result.getLose()
                                         + "draw " + result.getDraw());
+=======
+                                        +"win: " +result.getWin()
+                                        +"lose " + result.getLose()
+                                        +"draw " + result.getDraw());
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
                     }
                 } finally {
                     //db.close();
@@ -389,4 +455,8 @@ public class GameResult extends AppCompatActivity {
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9ca8cb2bfebe7e972e4899a7c09565e12b2e8ed4
